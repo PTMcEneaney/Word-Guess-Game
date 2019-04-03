@@ -1,0 +1,23 @@
+div {
+    border: 2px solid red;
+}
+body {
+    background-image: url(../images/Space_Texture.jpg);
+    background-size: 100%;
+}
+.mainImage {
+    background-color: none;
+}
+
+h1 {
+    font-family: 'Offside', cursive; 
+    font-size: 60px;
+    text-shadow: 0px 5px 10px black;
+}
+/* 
+font-family: 'Monoton', cursive; 5/5
+font-family: 'Ruslan Display', cursive; 4/5
+font-family: 'Megrim', cursive; 4/5 
+font-family: 'Offside', cursive; 5/5
+font-family: 'Fascinate', cursive; 4/5
+*/
