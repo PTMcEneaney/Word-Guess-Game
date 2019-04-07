@@ -21,28 +21,28 @@
 
 <body>
     <div class="row header">
-        <div class="col-md-12 text-center text-light">
+        <div class="col-12 text-center text-light">
             <h1> Space Hangman</h1>
         </div>
     </div>
 
     <div class="container">
-        <div class="row first">
-            <div class="col-md-6">
-                <div class="card text-white bg-dark">
-                    <div class="card-header current-word">Current Word</div>
+        <div class="row first mt-3">
+            <div class="col-6">
+                <div class="card text-white bg-dark border-primary">
+                    <div class="card-header" id="current-word">Current Word</div>
                     <div class="card-body">
-                        <h5 class="card-title">_ _ _ _ _ _ _ _ _ _</h5>
+                        <h5 class="card-title" id="hiddenWord">_ _ _ _ _ _ _ _ _ _</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                     the card's content.</p> -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card text-white bg-dark">
+            <div class="col-6">
+                <div class="card text-white bg-dark border-primary">
                     <div class="card-header">Letters Guessed</div>
                     <div class="card-body">
-                        <h5 class="card-title hiddenWord" id="word-0">_ _ _ _ _ _ _ _ _ _</h5>
+                        <h5 class="card-title" id="guesses">_ _ _ _ _ _ _ _ _ _</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                     the card's content.</p> -->
                     </div>
@@ -50,9 +50,9 @@
 
             </div>
         </div>
-        <div class="row second">
-            <div class="col-md-3">
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="row second mt-3">
+            <div class="col-3">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
                     <div class="card-header">Wins</div>
                     <div class="card-body">
                         <h5 class="card-title">0</h5>
@@ -60,7 +60,7 @@
                             the card's content.</p> -->
                     </div>
                 </div>
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
                     <div class="card-header">Next Word</div>
                     <div class="card-body">
                         <!-- <h5 class="card-title">Dark card title</h5> -->
@@ -68,19 +68,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 p-4 bg-none main-image">
+            <div class="col-6 p-4 bg-none main-image">
                 <img src="assets/images/astronaut.jpg" alt="Space Image" class="img-fluid" />
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="col-3">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
                     <div class="card-header">Guesses Remaining</div>
                     <div class="card-body">
-                        <h5 class="card-title">15</h5>
+                        <h5 class="card-title" id="guessesRemaining">15</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p> -->
                     </div>
                 </div>
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
                     <div class="card-header">Reset!</div>
                     <div class="card-body">
                         <p class="card-title">Click above to restart the game</p>
@@ -99,8 +99,8 @@
             </div>
         </div>
 
-        <div class="row footer text-white bg-dark text-center mt-3">
-            <div class="col-md-12">
+        <div class="row footer text-white bg-dark border border-primary text-center mt-3">
+            <div class="col-12">
                 <p>Copyright</p>
             </div>
         </div>

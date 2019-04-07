@@ -1,16 +1,16 @@
 //adding all the universial variables
 
-var trueLetters, falseLetters, guesses, wins, gamePlaying, hiddenWord, currentWord;
+var trueLetters, falseLetters, guesses, wins, gamePlaying, hiddenWord, currentWord, guessesRemaining;
 
 
 //"Press any key to get started" changes the state variable and resets the var values
 function init() {
     trueLetters = [0];
     falseLetters = [0];
-    guesses = 0;
+    guesses = [];
+    guessesRemaining = 15;
     wins = 0;
     hiddenWord = [];
-    currentWord = [];
 
     gamePlaying = true;
 }
@@ -44,35 +44,56 @@ var words = [
 
 init();
 
-function generateDashes(word) {
-    currentWord.push(word);
-    var hiddenWord = [];
-    for (var i = 0; i < word.length; i++) {
-        if (word[i] == ' ') {
-            hiddenWord.push('&nbsp;');
+
+function dashGenerator(song) {
+    for (i = 0; i < song.length; i++) {
+        if (song.charAt(i) == " ") {
+            hiddenWord.push(" ");
         } else {
-            hiddenWord.push('_');
+            hiddenWord.push("_");
         }
     }
-    return hiddenWord;
+    var dashDisplay = hiddenWord.join('');
+    document.getElementById('hiddenWord').textContent = dashDisplay;
+    
 }
 
-console.log(generateDashes('david bowie'));
-console.log(generateDashes('elton john'))
-console.log(currentWord);
+dashGenerator(words[Math.floor(Math.random() * words.length)]);
+
+document.onkeypress = function(event) {
+    guesses.push(event.key);
+
+    for (i = 0; i < guesses.length; i++) {
+        if (guesses.length <= 1) {
+            document.getElementById('guesses').textContent = guesses;
+            document.getElementById('guessesRemaining').textContent = guessesRemaining;
+            guessesRemaining--;
+        } else if (event.key !== guesses[i]) {
+            document.getElementById('guesses').textContent = guesses;
+            document.getElementById('guessesRemaining').textContent = guessesRemaining;
+            guessesRemaining--;
+        } else {
+            alert("something else happens")
+
+            //pop the last double letter off the array
+            //make it so it only checks the event.key to the array items if there are 2 or more items in the array
+            //alert if they already picked that letter
+            
+        }
+    }
+
+    console.log(guesses);
+}
 
 
-
-
-
-
-//listener event for key click
-// document.querySelector('.btn-roll').addEventListener('keydown', function() { 
-
-// }
-
-// window.addEventListener('keypress', function (e) {
-//     if (e.keyCode === 65 || e.keyCode === 66|| e.keyCode === 67 || e.keyCode === 68 || e.keyCode === 69 || e.keyCode === 70 || e.keyCode === 71 || e.keyCode === 72 || e.keyCode === 73 || e.keyCode === || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66 || e.keyCode = 66) {
-//         chars.push(e.key);
-//     }
-// }, false);
+//TODO LIST
+//Fix event listener so that it records key strokes properly
+//check if event.key matches any hidden-word elements
+//ask tutor if there is a way to remove commas from a printed array. If I can do that, I may not have to create the var dashDisplay and join the array on line 56
+//if I can't remove commas, figure out how to replace letters, probably using .charAt()
+//hide element of dash-arary or change that array item to the event.key
+//add win conditions and update score
+//add win banner
+//create next-word function that resets guesses and calls the dashGenerator function
+//add functionality to the reset game button that calls the init();
+//check that all scores etc are reset in the init();
