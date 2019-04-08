@@ -30,8 +30,8 @@
         <div class="row first mt-3">
             <div class="col-6">
                 <div class="card text-white bg-dark border-primary">
-                    <div class="card-header" id="current-word">Current Word</div>
-                    <div class="card-body">
+                    <div class="card-header" id="current-word">Current Word:</div>
+                    <div class="card-body d-flex justify-content-center">
                         <h5 class="card-title" id="hiddenWord">_ _ _ _ _ _ _ _ _ _</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                     the card's content.</p> -->
@@ -40,8 +40,8 @@
             </div>
             <div class="col-6">
                 <div class="card text-white bg-dark border-primary">
-                    <div class="card-header">Letters Guessed</div>
-                    <div class="card-body">
+                    <div class="card-header">Letters Guessed:</div>
+                    <div class="card-body d-flex justify-content-center">
                         <h5 class="card-title" id="guesses">_ _ _ _ _ _ _ _ _ _</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                     the card's content.</p> -->
@@ -51,39 +51,40 @@
             </div>
         </div>
         <div class="row second mt-3">
-            <div class="col-3">
-                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
-                    <div class="card-header">Wins</div>
-                    <div class="card-body">
-                        <h5 class="card-title">0</h5>
+            <div class="col-3 ">
+                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 18rem;">
+                    <div class="card-header">Wins:</div>
+                    <div class="card-body d-flex justify-content-center">
+                        <h5 class="card-title" id="wins">0</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p> -->
                     </div>
                 </div>
                 <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
-                    <div class="card-header">Next Word</div>
-                    <div class="card-body">
+                    <div class="card-header">Click here for the next word!</div>
+                    <div class="card-body d-flex justify-content-center">
                         <!-- <h5 class="card-title">Dark card title</h5> -->
-                        <p class="card-text">Click above to get the next word</p>
+                        <button type="button" class="btn btn-primary btn-block" id="nextWord">Next Word</button>
                     </div>
                 </div>
             </div>
             <div class="col-6 p-4 bg-none main-image">
-                <img src="assets/images/astronaut.jpg" alt="Space Image" class="img-fluid" />
+                <img src="assets/images/astronaut.jpg" alt="Space Image" class="img-fluid" id="starterPic"/>
+                <iframe class="h-100 w-100 d-none" id="video" src="#" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="col-3">
                 <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
-                    <div class="card-header">Guesses Remaining</div>
-                    <div class="card-body">
+                    <div class="card-header">Guesses Remaining:</div>
+                    <div class="card-body d-flex justify-content-center">
                         <h5 class="card-title" id="guessesRemaining">15</h5>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p> -->
                     </div>
                 </div>
-                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
-                    <div class="card-header">Reset!</div>
-                    <div class="card-body">
-                        <p class="card-title">Click above to restart the game</p>
+                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 18rem;">
+                    <div class="card-header">Click here to reset the whole game!</div>
+                    <div class="card-body d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary btn-block" id="resetGame">Reset</button>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                 the card's content.</p> -->
                     </div>
