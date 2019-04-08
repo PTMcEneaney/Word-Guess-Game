@@ -80,9 +80,8 @@ var youTube = [
     'https://www.youtube.com/embed/x1rFAaAKpVc?rel=0;&autoplay=1', //we are all made of stars
     'https://www.youtube.com/embed/f9X1C7pTu-M?rel=0;&autoplay=1', //space song
     'https://www.youtube.com/embed/Hc16Y9fiCvQ?rel=0;&autoplay=1', //spaceman
-    'https://www.youtube.com/embed/thXmHW4-WC4?rel=0;&autoplay=1', //supersonic rocket ship
-    'https://www.youtube.com/embed/LR4kY8LGx7M?rel=0;&autoplay=1', //the kinks
-    'https://www.youtube.com/embed/LR4kY8LGx7M?rel=0;&autoplay=1', //oasis
+    'https://www.youtube.com/embed/LR4kY8LGx7M?rel=0;&autoplay=1', //'supersonic rocket ship', the kinks
+    'https://www.youtube.com/embed/LR4kY8LGx7M?rel=0;&autoplay=1', // 'champange supernova', oasis
     'https://www.youtube.com/embed/dLxpNiF0YKs?rel=0;&autoplay=1', //REM
     'https://www.youtube.com/embed/5BmEGm-mraE?rel=0;&autoplay=1', //CCR
     'https://www.youtube.com/embed/sR47TZdJg64?rel=0;&autoplay=1', //king harvest
