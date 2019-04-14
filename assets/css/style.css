@@ -4,10 +4,12 @@ body {
     background-size: 100%;
     font-family: 'Open Sans', sans-serif;
 }
-.mainImage {
-    background-color: none;
+.header {
+    margin: 0px auto 0px auto;
 }
-
+.container {
+    min-width: 340px;
+}
 h1 {
     font-family: 'Offside', cursive; 
     font-size: 60px;
@@ -17,9 +19,13 @@ p {
     font-size: 10px;
 }
 
-h5 {
+h2 {
     letter-spacing: 3px;
-    font-size: 30px;
+    font-size: 25px;
+}
+#video {
+    max-width: 100rem;
+    min-height: 16rem;
 }
 
 /* 

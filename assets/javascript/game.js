@@ -1,5 +1,7 @@
-
+   
+//**************ENTIRE GAME IS SAVED IN THIS OBJECT wordGuessGame ***********************************************************************/
 var wordGuessGame = {
+    //defining keys since I reference them later, these were initially global variables
     guesses: undefined,
     wins: undefined,
     gamePlaying: undefined,
@@ -9,7 +11,8 @@ var wordGuessGame = {
     dashDisplay: undefined,
     randomNumber: undefined,
 
-    nextWord: function nextWord() { //arrow function doesn't have a value for the word this --> will reference outside the arrow
+    //*************NEXT WORD METHOD RESETS MOST VALUES BUT ALLOWS YOUTUBE VIDEO TO KEEP PLAYING, DOES NOT CHANGE TOTAL WINS ****************/
+    nextWord: function nextWord() { 
         this.guesses = [];
         this.guessesRemaining = 15;
         this.hiddenWord = [];
@@ -21,22 +24,20 @@ var wordGuessGame = {
         document.getElementById("nextWord").classList.add("disabled");
         this.randomNumber = Math.floor(Math.random() * this.words.length);
         this.dashGenerator(this.words[this.randomNumber]);
-
-        console.log('working');
+        /* uncomment below if I want the video removed and the pic restored when the nextWord button is pressed
+        document.getElementById('starterPic').classList.remove("d-none");
+        document.getElementById('video').classList.add("d-none"); */
     },
 
-    //"Press any key to get started" changes the state variable and resets the var values
+    //*************INIT CALLS NEXT WORD, BUT ALSO RESETS WINS TO 0, AND UPDATES THE WINS DISPLAY ****************************************/
     init: function init() {
         this.nextWord();
         this.wins = 0;
         document.getElementById('wins').textContent = this.wins;
-
-        //uncomment below if I want the video removed when the reset button ins pressed
-        // document.getElementById('starterPic').classList.remove("d-none");
-        // document.getElementById('video').classList.add("d-none");
-
     },
 
+    /* ************dashGenerator is a method that is called in NextWord method. It replaces the characters in the randomly chosen song
+    with dashes or spaces, stores those characters as an array, and joins them so they display as a string without commas */
     dashGenerator: function dashGenerator(song) {
         for (i = 0; i < song.length; i++) {
             if (song.charAt(i) == " ") {
@@ -47,37 +48,38 @@ var wordGuessGame = {
         }
         this.dashDisplay = this.hiddenWord.join('');
         document.getElementById('hiddenWord').textContent = this.dashDisplay;
-        console.log(song);
         this.currentWord = song;
     },
 
+    /* **********THESE ARE ALL THE SPACE-THEMED SONG TITLES, they get chosen randomly by the Math.random function on keyup events ********/
     words: [
-        'space oddity', //david bowie
-        'ziggy stardust', //david bowie
-        'life on mars', //david bowie
-        'starman', //david bowie
-        'moonage daydream', // david bowie
-        'rocket man', //elton john
-        'intergalactic', //beastie boys
-        'walking on the sun', // smash mouth
-        'girl from mars', //ash
-        'we are all made of stars', //moby
-        'space song', //beach house
-        'spaceman', //the killers
-        'champange supernova', //oasis
-        'man on the moon', //REM
-        'bad moon rising', //CCR
-        'dancing in the moonlight', //king harvest
-        'sisters of the moon', //fleetwood mac
-        'harvest moon', //neil young
-        'major tom', //peter schilling
-        'across the universe', //the beatles
-        'parallel universe', //red hot chili peppers
-        'space jam', //quad city DJ's
-        'staring at the sun', //tv on the radio
-        'black hole sun', //soundgarden
+        'space oddity', 
+        'ziggy stardust', 
+        'life on mars', 
+        'starman', 
+        'moonage daydream', 
+        'rocket man',
+        'intergalactic', 
+        'walking on the sun',
+        'girl from mars',
+        'we are all made of stars',
+        'space song', 
+        'spaceman',
+        'champange supernova',
+        'man on the moon', 
+        'bad moon rising',
+        'dancing in the moonlight',
+        'sisters of the moon', 
+        'harvest moon', 
+        'major tom', 
+        'across the universe', 
+        'parallel universe', 
+        'space jam', 
+        'staring at the sun', 
+        'black hole sun', 
     ],
 
+    /* *****************THESE ARE ALL THE YOUTUBE VIDEOS ASSOCIATED WITH EACH SECRET SONG, the source changes to their URL when the word is guessed correctly */
     youTube: [
         'https://www.youtube.com/embed/iYYRH4apXDo?rel=0;&autoplay=1', // 'space oddity', david bowie
         'https://www.youtube.com/embed/XXq5VvYAI1Q?rel=0;&autoplay=1', // 'ziggy stardust', david bowie
@@ -106,32 +108,33 @@ var wordGuessGame = {
     
     ],
 
-    eventKey: function(event) {
-        console.log(this.gamePlaying);
-        //prevents browser from applying default key press behavior
-        //determine if key is a letter or not (regular expressions/keycode values)
-        if (event.key.toUpperCase() === event.key.toLowerCase() || event.key.length > 1) {
-            //if upper case and lower case are the same then it's not a letter
-            return;
-        } 
-        if (this.gamePlaying) {
+/* ********************METHOD DEFINED--> THIS IS WHERE MOST OF THE FUNCTIONALITY OF THE GAME IS DEFINED, CALLED LATER WITH AN ON-CLICK ********************/
+eventKey: function(event) {
+    //determine if key is a letter or not 
+    if (event.key.toUpperCase() === event.key.toLowerCase() || event.key.length > 1) {
+        //if upper case and lower case are the same then it's a symbol, number or other, if the length is more than one character then it's a complex key like enter, alt, control, etc.
+        //THIS IF STATEMENT SHOULD PREVENT THE USER FROM ACCIDENTALLY INPUTING ANYTHING BUT A LETTER
+        return;
+        //return stops any other if statements or functions from taking place if the user pressed something other than a letter
+    } 
+    if (this.gamePlaying) {
+        //when gamePlaying === true, it allows the user to enter guesses. This changes when win/lose conditions are met, and is reset with the nextWord method
             this.guesses.push(event.key);
             this.guessesRemaining--;
     
             var isGuessCorrect = false;
-            //********************** */
+            //********************** CHECKS FOR DUPE INPUTS BY THE USER, REMOVES THAT GUESS FROM THE ARRAY/LETTERS GUESSED DISPLAY*/
             for (i = 0; i < this.guesses.length; i++) {
                 if (event.key == this.guesses[i] && i < this.guesses.length - 1) {
                     alert('You already guessed that!')
                     this.guessesRemaining++;
                     this.guesses.pop();
-                    return;    
-                    //IF THERE IS A DUPE, ADD A GUESS BACK, REMOVE THE LAST ITEM IN THE ARARY, AND ADJUST THE GUESSES DISPLAY
-                    //(CHECKS EVERY INDEX EXCEPT THE LAST ONE, THIS IS BECASUE THE EVENT.KEY GETS PUSHED TO THE END, SO WE DON'T WANT THE EVENT.KEY TO CHECK AGAINST IT SELF AND GET A FALSE POSITIVE.)           
+                    return;   
+                    //adding a return so that the loop ends if they clicked a dupe letter 
                 }
             }
             
-            //********************** PUSHING GUESSES TO THE CURRENT WORD BOX */
+            //* *********************Pushes key strokes to the DashDisplay variable, and displays that to the user */
             for (i = 0; i < this.hiddenWord.length; i++) {
                 if (event.key == this.currentWord.charAt(i)) {
     
@@ -144,8 +147,10 @@ var wordGuessGame = {
 
             if (isGuessCorrect === true) {
                 this.guessesRemaining++;
+                //added this b/c we only want to remove guesses if the player guesses incorrectly
             }
-    
+            
+            //Update Displays for letters guessed, and guesses remaining
             document.getElementById('guesses').textContent = this.guesses;
             document.getElementById('guessesRemaining').textContent = this.guessesRemaining;
     
@@ -162,21 +167,26 @@ var wordGuessGame = {
                 document.getElementById('video').src = insertVideo;
     
                 this.gamePlaying = false;
+                //prevents the player from guessing extra letters
             } 
     
-                //*********************OUT OF GUESSES */
+                //*********************OUT OF GUESSES / LOSE CONDITIONS */
             if (this.guessesRemaining < 1) {
                 alert("You Lose!")
+
+                //immediately calls the init function after the alert so that the game-restarts automatically
                 this.init()
             }
         }
     },
 }
 
+//initializes the game, sets default values for all variables
 wordGuessGame.init();
 
-//MOST OF THE FUNCTIONALITY IS TRIGGERED BY A KEYPRESS
+//KEYPRESS EVENT WHICH CALLS THE OBJECT AND IT'S METHODS
 document.onkeydown = wordGuessGame.eventKey.bind(wordGuessGame);
 document.getElementById('nextWord').addEventListener('click', wordGuessGame.nextWord.bind(wordGuessGame)); 
 document.getElementById('resetGame').addEventListener('click', wordGuessGame.init.bind(wordGuessGame)); 
-//had to bind so that this. was referencing wordGuessGame not the document
+//had to bind these so that 'this' was referencing wordGuessGame not the document
+

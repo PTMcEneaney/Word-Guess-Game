@@ -17,92 +17,81 @@
 </head>
 
 <body>
-    <div class="row header">
-        <div class="col-12 text-center text-light">
-            <h1> Space Hangman</h1>
-        </div>
-    </div>
-
     <div class="container">
-        <div class="row first mt-3">
-            <div class="col-6">
+        <div class="row header mt-4 mb-2 w-100">
+            <div class="col-lg-12 text-center text-light justify-content-center margin">
+                <h1> Cosmic Hangman</h1>
+            </div>
+        </div>
+        <div class="row first">
+            <div class="col-lg-6 mt-3">
                 <div class="card text-white bg-dark border-primary">
                     <div class="card-header" id="current-word">Current Word:</div>
                     <div class="card-body d-flex justify-content-center">
-                        <h5 class="card-title" id="hiddenWord">_ _ _ _ _ _ _ _ _ _</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p> -->
+                        <h2 class="card-title" id="hiddenWord">_ _ _ _ _ _ _ _ _ _</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 mt-3">
                 <div class="card text-white bg-dark border-primary">
                     <div class="card-header">Letters Guessed:</div>
                     <div class="card-body d-flex justify-content-center">
-                        <h5 class="card-title" id="guesses">_ _ _ _ _ _ _ _ _ _</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p> -->
+                        <h2 class="card-title" id="guesses">_ _ _ _ _ _ _ _ _ _</h2>
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="row second mt-3">
-            <div class="col-3 ">
-                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 18rem;">
-                    <div class="card-header">Wins:</div>
+        <div class="row second mt-3 align-items-center">
+            <div class="col-lg-6 px-3 main-image mb-3">
+                <div class="card bg-dark border-primary rounded p-3">
+                    <img src="assets/images/astronaut.jpg" alt="Space Image" class="img-fluid my-auto"
+                        id="starterPic" />
+                    <iframe class="w-100 d-none rounded border-primary" id="video" alt="youtube video" src="#"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-lg-3 ">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 100rem;">
+                    <div class="card-header">Guesses Remaining:</div>
                     <div class="card-body d-flex justify-content-center">
-                        <h5 class="card-title" id="wins">0</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p> -->
+                        <h2 class="card-title" id="guessesRemaining">15</h2>
                     </div>
                 </div>
-                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
+                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 100rem;">
                     <div class="card-header">Click here for the next word!</div>
                     <div class="card-body d-flex justify-content-center">
-                        <!-- <h5 class="card-title">Dark card title</h5> -->
                         <button type="button" class="btn btn-primary btn-block" id="nextWord">Next Word</button>
                     </div>
                 </div>
             </div>
-            <div class="col-6 p-4 bg-none main-image">
-                <img src="assets/images/astronaut.jpg" alt="Space Image" class="img-fluid " id="starterPic"/>
-                <iframe class="h-100 w-100 d-none" id="video" src="#" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="col-3">
-                <div class="card text-white bg-dark mb-3 border-primary" style="max-width: 18rem;">
-                    <div class="card-header">Guesses Remaining:</div>
+            <div class="col-lg-3">
+                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 100rem;">
+                    <div class="card-header">Wins:</div>
                     <div class="card-body d-flex justify-content-center">
-                        <h5 class="card-title" id="guessesRemaining">15</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p> -->
+                        <h2 class="card-title" id="wins">0</h2>
                     </div>
                 </div>
-                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 18rem;">
+
+                <div class="card text-white bg-dark mb-3 border-primary " style="max-width: 100rem;">
                     <div class="card-header">Click here to reset the game!</div>
                     <div class="card-body d-flex justify-content-center">
                         <button type="button" class="btn btn-primary btn-block" id="resetGame">Reset</button>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p> -->
                     </div>
                 </div>
-                <!-- <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Change Number of Players</div>
-                    <div class="card-body">
-                        <h5 class="card-title">0</h5>
-                        <p class="card-text">Cllick to change the number of people playing</p>
-                        <a href="#" class="btn btn-primary">More</a> 
-                        <a href="#" class="btn btn-primary">Less</a>                   </div>
-                </div> -->
             </div>
         </div>
 
-        <div class="row footer text-white bg-dark border border-primary text-center mt-3">
+
+        <div class="row footer text-white bg-dark border border-primary text-center rounded mt-1 mx-0">
             <div class="col-12">
-                <p class='mt-3'>Copyright</p>
+                <p class="float-left m-3"><a href="https://ptmceneaney.github.io/Responsive-Portfolio/" target="_blank">Learn about the creator of this game!</a></p>
+                <p class='float-right m-3'>© 2019 Copyright</p>
             </div>
         </div>
     </div>
 </body>
 <script src="assets/javascript/game.js"></script>
+
 </html>
